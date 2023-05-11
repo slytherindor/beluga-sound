@@ -13,7 +13,7 @@ const generateRandomFileContent = require("./utils/randomFileContentGenerator");
 async function generateSampleFiles(filePrefix, k) {
     let filePromises = [];
     for (let x = 1; x <= k; x++) {
-        filePromises.push(generateRandomFileContent(`${filePrefix}${x}.txt`, 200000, 200))
+        filePromises.push(generateRandomFileContent(`${filePrefix}${x}.txt`, 200000, 200, {line: 10, keyword: "PPP"}))
     }
     return await Promise.all(filePromises)
 }
@@ -25,22 +25,28 @@ async function generateSampleFiles(filePrefix, k) {
  * @returns {Promise<{fileName: string, count: number}>} A promise that resolves to an object containing the file name and the count of 'PPP' sequences on the 10th line.
  */
 async function countSequenceOnLine(fileName) {
-    const fileStream = fs.createReadStream(fileName);
-    const rl = createInterface({
-        input: fileStream,
-    });
+    try {
+        const fileStream = fs.createReadStream(fileName);
+        const rl = createInterface({
+            input: fileStream,
+        });
 
-    let lineNumber = 0;
-    let count = 0;
+        let lineNumber = 0;
+        let count = 0;
 
-    for await (const line of rl) {
-        lineNumber++;
-        if (lineNumber === 10) {
-            count = (line.match(/PPP/g) || []).length;
-            break;
+        for await (const line of rl) {
+            lineNumber++;
+            if (lineNumber === 10) {
+                count = (line.match(/PPP/g) || []).length;
+                break;
+            }
         }
+        return { fileName, count };
+    } catch (e) {
+        console.error(`There was an error reading ${fileName}`);
+        return { fileName, count: 0 };
     }
-    return { fileName, count };
+
 }
 /**
  * Finds files containing the 'PPP' sequence in their 10th line and returns an array of their file names and the count of 'PPP' sequences.
@@ -50,6 +56,8 @@ async function countSequenceOnLine(fileName) {
  * @returns {Promise<Array<{fileName: string, count: number}>>} A promise that resolves to an array of objects containing the file names and the count of 'PPP' sequences for each file that contains them.
  */
 async function findFilesToProcess(fileNames, batchSize) {
+    console.log(`Processing files ${fileNames}`);
+
     const allPromises = fileNames.map((filename) => {
         return countSequenceOnLine(filename);
     });

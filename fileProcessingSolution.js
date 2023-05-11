@@ -1,11 +1,19 @@
 const {generateSampleFiles, findFilesToProcess} = require("./fileProcessing/fileProcessor");
 
-generateSampleFiles("test",10).then((res) => {
-    console.log("Created sample files", res);
-}).catch(e => {
-    console.error("Failed to create sample files", e)
-});
+async function run(){
+    try {
+        await generateSampleFiles("test",10).then((res) => {
+            console.log("Created sample files", res);
+        });
+    } catch(e) {
+        console.error("Failed to create sample files", e)
+    };
+    try {
+        const result = await findFilesToProcess(["test1.txt", "test2.txt", "test3.txt", "test14.txt"], 0);
+        console.log(result);
+    } catch (e) {
+        console.error("Failed to process files", e)
+    }
+}
 
-findFilesToProcess(["test1.txt", "test2.txt", "test1.txt", "test2.txt"], 0).then((r) => {
-    console.log(r)
-});
+void run();
