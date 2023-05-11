@@ -1,0 +1,15 @@
+{
+  "name": "bedrock-ai-assessment",
+  "version": "1.0.0",
+  "description": "Bedrock AI Assessment solutions",
+  "scripts": {
+    "wordle": "node wordleSolution.js",
+    "findFiles": "node fileProcessingSolution.js"
+  },
+  "keywords": [],
+  "author": "Shubhanshu Aarsay",
+  "license": "MIT",
+  "dependencies": {
+    "an-array-of-english-words": "^2.0.0"
+  }
+}
