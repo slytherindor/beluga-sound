@@ -15,16 +15,16 @@ Import following function and run them with arguments
 generateSampleFiles("test",10).then((res) => {
     console.log("Created sample files", res);
 }).catch(e => {
-    console.error("Failed to create sample files", e)
+    console.error("Failed to create sample files", e);
 })
 
 findFilesToProcess(["test1.txt", "test2.txt", "test1.txt", "test2.txt"], 0).then((r) => {
-    console.log(r)
+    console.log(r);
 })
 ```
 
 Questions:
-What is the probability of encountering a single ‘PPP’’ sequence on the 10th line of a document?
+What is the probability of encountering a single ‘PPP’ sequence on the 10th line of a document?
 
 ```
 To calculate the probability of encountering a single 'PPP' sequence on the 10th line of a document,
@@ -64,7 +64,7 @@ Solution:
 Import WordlePlayer and call play method to proceed.
 ```javascript
 const helper = new WordlePlayer();
-helper.play()
+helper.play();
 ```
 
 =====================================================================

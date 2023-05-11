@@ -71,4 +71,4 @@ function generateRandomFileContent(fileName, lines, charsPerLine, injectKeywordA
     });
 }
 
-module.exports = generateRandomFileContent
+module.exports = generateRandomFileContent;

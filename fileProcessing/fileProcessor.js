@@ -13,9 +13,9 @@ const generateRandomFileContent = require("./utils/randomFileContentGenerator");
 async function generateSampleFiles(filePrefix, k) {
     let filePromises = [];
     for (let x = 1; x <= k; x++) {
-        filePromises.push(generateRandomFileContent(`${filePrefix}${x}.txt`, 200000, 200, {line: 10, keyword: "PPP"}))
+        filePromises.push(generateRandomFileContent(`${filePrefix}${x}.txt`, 200000, 200, {line: 10, keyword: "PPP"}));
     }
-    return await Promise.all(filePromises)
+    return await Promise.all(filePromises);
 }
 
 /**
@@ -61,24 +61,23 @@ async function findFilesToProcess(fileNames, batchSize) {
     const allPromises = fileNames.map((filename) => {
         return countSequenceOnLine(filename);
     });
-    let result = []
+    let result = [];
 
     if (batchSize) {
         const chunkedPromises = splitToNChunks(allPromises, batchSize)
-        console.log(chunkedPromises)
         for (let k of chunkedPromises) {
-            const res = await Promise.all(k)
-            result.push(...res.filter(r => r.count > 0))
+            const res = await Promise.all(k);
+            result.push(...res.filter(r => r.count > 0));
         }
     } else {
-        const resolvedPromises =  await Promise.all(allPromises)
-        result = resolvedPromises.filter(r => r.count > 0)
+        const resolvedPromises =  await Promise.all(allPromises);
+        result = resolvedPromises.filter(r => r.count > 0);
     }
-    return result
+    return result;
 }
 
 
 module.exports = {
     generateSampleFiles,
     findFilesToProcess
-}
+};
