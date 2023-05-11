@@ -77,16 +77,3 @@ or you can import WordlePlayer and call play method to proceed.
 const helper = new WordlePlayer();
 helper.play();
 ```
-
-=====================================================================
-
-System Design
-
-We will discuss this during the next interview, so you do not need to provide a very detailed solution right now. If you want to, you can add a diagram. It is not necessary though.
-
-Plenty of dating sites exist on the market but none of them seem to be particularly beloved by the general population. Eniola sensed a market opportunity and decided to disrupt the industry with her new app. A key algorithmic decision in a dating site is determining the order of profiles to show a particular user. Eniola decided to use the following nonsensical but surprisingly well-working strategy -
-
-The accounts are assigned ids in the order of their popularity, where popularity is defined by the number of times an account has been ‘swiped right’ on by other users. This is refreshed at the beginning of every day. For ID X, the users displayed would be the users swiped left by ids X-1, X-2, … X-50. If the users are exhausted (because of ID X swiping all of them either left or right), random users would be chosen for display next.
-
-Consider the number of users is 1 million. How would you store this data, including the swipe decisions? Give a high-level system architecture built using tools in the AWS Ecosystem. Propose the simplest and cheapest robust solution that works. 
-
