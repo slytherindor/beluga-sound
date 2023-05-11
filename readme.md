@@ -28,16 +28,25 @@ Questions:
 What is the probability of encountering a single ‘PPP’ sequence on the 10th line of a document?
 
 ```
-To calculate the probability of encountering a single 'PPP' sequence on the 10th line of a document,
+To calculate the probability of encountering at least one 'PPP' sequence on the 10th line of a document,
 we can consider each character as an independent event.
 Each character in the line can be any of the 26 uppercase English alphabets or 10 digits, so there are 36 possible characters.
-We are looking for the sequence 'PPP', which has a probability of (1/36) * (1/36) * (1/36) for any given position.
-Since there are 200 characters in a line, there are 198 possible positions for the 'PPP' sequence to occur.
 
-Probability of 'PPP' sequence in a single position: (1/36) * (1/36) * (1/36)
-Probability of NOT encountering 'PPP' in a single position: 1 - ((1/36) * (1/36) * (1/36))
-Probability of NOT encountering 'PPP' in any of the 198 positions: (1 - ((1/36) * (1/36) * (1/36)))^198
 Probability of encountering at least one 'PPP' sequence in the 10th line: 1 - (1 - ((1/36) * (1/36) * (1/36)))^198
+
+Let's calculate it:
+
+Probability of encountering at least one 'PPP' sequence in the 10th line = 1 - (1 - ((1/36) * (1/36) * (1/36)))^198
+
+Probability of encountering at least one 'PPP' sequence in the 10th line ≈ 1 - (1 - (0.0000007716))^198
+
+Probability of encountering at least one 'PPP' sequence in the 10th line ≈ 1 - (0.9999992284)^198
+
+Probability of encountering at least one 'PPP' sequence in the 10th line ≈ 1 - 0.999813224
+
+Probability of encountering at least one 'PPP' sequence in the 10th line ≈ 0.000186776
+
+Therefore, the probability of encountering at least one 'PPP' sequence on the 10th line of a document is approximately 0.000186776, or approximately 0.0187%.
 ```
 
 Considering you have to do this filtering across millions of documents, what strategies would you use to reduce run time? This can be reflected in the code you write.
