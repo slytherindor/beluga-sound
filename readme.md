@@ -1,6 +1,3 @@
-Hello and welcome to the Bedrock AI Take-home Assessment. I hope you will find this fun. We value your time - please don’t take more than 2 hours to work on this, unless you find the questions extremely interesting :-). Clean and well documented code would be much appreciated. If you have any questions regarding the assessment, please do not hesitate to get in touch with me. Feel free to Google/Co-pilot/GPT-4 for solutions, just like you would at any job. Enjoy!
-
-
 Question 1 (Javascript)
 
 Nasrin was apoplectic. She was assigned the gruesome task of processing hundreds of thousands of long documents, each with a million lines on average. But due to her tenacity, she realized most documents need not be subject to any processing, and you could determine which ones to process and which ones to not just by checking if the 10th line of each document contains the characters ‘PPP’ (at least one contiguous sequence of 3 Ps).
